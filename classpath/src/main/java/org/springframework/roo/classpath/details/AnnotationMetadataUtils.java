@@ -12,6 +12,7 @@ import org.springframework.roo.classpath.details.annotations.EnumAttributeValue;
 import org.springframework.roo.classpath.details.annotations.IntegerAttributeValue;
 import org.springframework.roo.classpath.details.annotations.LongAttributeValue;
 import org.springframework.roo.classpath.details.annotations.NestedAnnotationAttributeValue;
+import org.springframework.roo.classpath.details.annotations.StaticExpressionAttributeValue;
 import org.springframework.roo.classpath.details.annotations.StringAttributeValue;
 import org.springframework.roo.model.EnumDetails;
 import org.springframework.roo.model.ImportRegistrationResolver;
@@ -85,6 +86,9 @@ public abstract class AnnotationMetadataUtils {
         else if (value instanceof StringAttributeValue) {
             attributeValue = "\"" + ((StringAttributeValue) value).getValue()
                     + "\"";
+        }
+        else if (value instanceof StaticExpressionAttributeValue) {
+            attributeValue = ((StaticExpressionAttributeValue) value).getValue();
         }
         else if (value instanceof NestedAnnotationAttributeValue) {
             final AnnotationMetadata annotationMetadata = ((NestedAnnotationAttributeValue) value)
